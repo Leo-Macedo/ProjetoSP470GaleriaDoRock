@@ -17,14 +17,15 @@ public class LobisomenCaca: MonoBehaviour
 
     void Update()
     {
-        // Define o destino do agente para a posição do alvo
-        agente.SetDestination(alvo.position);
-
+       
         Seguiranimar();
     }
 
     private void Seguiranimar()
     {
+         // Define o destino do agente para a posição do alvo
+        agente.SetDestination(alvo.position);
+
         //Animações de andar e parar
 
         if (agente.velocity != Vector3.zero)

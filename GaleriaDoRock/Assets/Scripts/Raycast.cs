@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Raycast : MonoBehaviour
@@ -12,25 +12,26 @@ public class Raycast : MonoBehaviour
     public GameObject txtcliquepararegastar; // O objeto que será ativado
     public TextMeshProUGUI txtanimaisresgatados; // Referência ao TextMeshPro
 
-    private int deletionCount = 0 ; // Variável para contar as deleções
+    private int deletionCount = 0; // Variável para contar as deleções
 
     public GameObject telaFinal;
     public GameObject telaJogo;
     public GameObject lobisomen;
 
-       
-       
-
- void Start()
+    void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
     }
 
     void Update()
     {
-        
+        ResgatarAnimais();
+        VerificarVitoria();
+    }
+
+    public void ResgatarAnimais()
+    {
         // Cria um raycast na direção do cursor
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -41,7 +42,6 @@ public class Raycast : MonoBehaviour
             // Verifica se o objeto está na layer "TransparentFX"
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer(targetLayer))
             {
-            
                 // Ativa o objeto
                 txtcliquepararegastar.SetActive(true);
 
@@ -52,7 +52,7 @@ public class Raycast : MonoBehaviour
                     Destroy(hit.transform.gameObject);
                     deletionCount++;
                     txtanimaisresgatados.text = "Animais resgatados: " + deletionCount + "/5";
-                }         
+                }
             }
             else
             {
@@ -65,19 +65,19 @@ public class Raycast : MonoBehaviour
             // Desativa o objeto se o raycast não está mais detectando um objeto
             txtcliquepararegastar.SetActive(false);
         }
-         if (deletionCount == 5)
-                    {
-                        // Ativa o objeto telaFinal
-                        
-                        telaFinal.SetActive(true);
-                        telaJogo.SetActive(false);
-                        lobisomen.SetActive(false);
-                        Cursor.lockState = CursorLockMode.None;
-                        Cursor.visible = true;
-                    
-                
+    }
 
-                    }
+    public void VerificarVitoria()
+    {
+        if (deletionCount == 5)
+        {
+            // Ativa o objeto telaFinal
+
+            telaFinal.SetActive(true);
+            telaJogo.SetActive(false);
+            lobisomen.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
-    }
-    
+}
