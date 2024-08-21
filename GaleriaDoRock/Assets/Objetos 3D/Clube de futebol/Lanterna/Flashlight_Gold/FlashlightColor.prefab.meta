@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d20ff154c05970347b37751a450bd9c3
+timeCreated: 1525015192
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 18972
+  packageName: Flashlight
+  packageVersion: v1.61
+  assetPath: Assets/Flashlight/Flashlight_Gold/FlashlightColor.prefab
+  uploadId: 243072
